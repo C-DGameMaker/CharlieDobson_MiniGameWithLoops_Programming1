@@ -15,8 +15,6 @@ namespace CharlieDobson_MiniGameWithLoops_Programming1
         static int y = 0;
         static ConsoleKeyInfo movement = new ConsoleKeyInfo();
 
-        static bool[] visited = { };
-
         static void Main(string[] args)
         {
             Console.WriteLine("Makeshift Snake the Game");
@@ -83,7 +81,7 @@ namespace CharlieDobson_MiniGameWithLoops_Programming1
                 {
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write(" ");
-                    //Thread.Sleep(10);
+                    Thread.Sleep(10);
                 }
                 Console.Write("\n");
                 Thread.Sleep(10);
@@ -93,14 +91,22 @@ namespace CharlieDobson_MiniGameWithLoops_Programming1
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
 
+            bool[,] visited = new bool[30, 15];
+
             while (gameOver == false)
             {
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 movement = Console.ReadKey(true);
                 Console.SetCursorPosition(x, y);
+                visited[x, y] = true;
 
                 PlayerUpdate();
                 PlayerDraw(x, y);
+
+                if (visited[x,y] == true)
+                {
+                    gameOver = true;
+                }
 
 
                 Thread.Sleep(10);
