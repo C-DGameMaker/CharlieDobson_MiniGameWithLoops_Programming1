@@ -39,6 +39,7 @@ namespace CharlieDobson_MiniGameWithLoops_Programming1
             Console.Clear();
 
             Console.Write("GAME OVER!");
+            Thread.Sleep(500);
         }
 
         static void DrawMode()
